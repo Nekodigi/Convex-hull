@@ -53,7 +53,7 @@ class ExampleHull{
     stroke(255, 0, 0);
     point(hull.centroid);
     stroke(0);
-    noFill();
+    fill(255);
     for(Simplex simplex : hull.simplexes){
       simplex.show();
     }

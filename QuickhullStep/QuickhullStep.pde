@@ -27,6 +27,7 @@ void mousePressed(){
 }
 
 void draw(){
+  lights();
   background(200);
   translate(width/2, height/2);
   if(mode3D){

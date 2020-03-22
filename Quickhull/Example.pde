@@ -15,6 +15,9 @@ class ExampleHull{
         case 3:
           vertices.add(new Vertex(0, random(-size, size), random(-size, size), random(-size, size)));//id will be assigned later
           break;
+        case 4:
+          vertices.add(new Vertex(0, random(-size, size), random(-size, size), random(-size, size), random(-size, size)));//id will be assigned later
+          break;
       }
     }
     
@@ -23,8 +26,6 @@ class ExampleHull{
   }
   
   void show(){
-    println("finalsize:"+hull.simplexes.size());
-    println("verticessize:"+vertices.size());
     stroke(255);
     for(Vertex vertex : vertices){
       point(vertex.pos);
