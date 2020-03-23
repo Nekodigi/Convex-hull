@@ -6,7 +6,7 @@ class ExampleHull{
   int seed = 0;
   
   ExampleHull(int dim){
-    randomSeed(seed);
+    //randomSeed(seed);
     for(int i = 0; i < numVertices; i++){
       switch(dim){
         case 2:
@@ -14,6 +14,9 @@ class ExampleHull{
           break;
         case 3:
           vertices.add(new Vertex(0, random(-size, size), random(-size, size), random(-size, size)));//id will be assigned later
+          break;
+        case 4:
+          vertices.add(new Vertex(0, random(-size, size), random(-size, size), random(-size, size), random(-size, size)));//id will be assigned later
           break;
       }
     }
@@ -23,7 +26,6 @@ class ExampleHull{
   }
   
   void step(){
-    println("stepStart--------------");
     hull.step();
   }
   

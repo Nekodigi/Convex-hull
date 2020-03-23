@@ -4,11 +4,17 @@ boolean mode3D = false;
 
 ExampleHull hull2D = new ExampleHull(2);
 ExampleHull hull3D = new ExampleHull(3);
+//ExampleHull hull4D = new ExampleHull(4);
 
 void setup(){
   fullScreen(P3D);
   //size(500, 500, P3D);
   ortho();
+}
+
+void mousePressed(){
+  hull2D.step();
+  hull3D.step();
 }
 
 void keyPressed(){
@@ -19,11 +25,6 @@ void keyPressed(){
   if(key == 'm'){
     mode3D = !mode3D;
   }
-}
-
-void mousePressed(){
-  hull2D.step();
-  hull3D.step();
 }
 
 void draw(){

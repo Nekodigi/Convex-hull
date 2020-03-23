@@ -6,7 +6,7 @@ class ExampleHull{
   int seed = 0;
   
   ExampleHull(int dim){
-    randomSeed(seed);
+    //randomSeed(seed);
     for(int i = 0; i < numVertices; i++){
       switch(dim){
         case 2:
@@ -33,7 +33,7 @@ class ExampleHull{
     stroke(255, 0, 0);
     point(hull.centroid);
     stroke(0);
-    noFill();
+    fill(255);
     for(Simplex simplex : hull.simplexes){
       simplex.show();
     }

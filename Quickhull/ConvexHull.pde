@@ -55,6 +55,12 @@ class ConvexHull{
     buffer = null;
   }
   
+  void clear(){
+    centroid = new float[dim];
+    simplexes.clear();
+    vertices.clear();
+  }
+  
   //region INITIALIZATION-------------------------------------
   //find the (dimension+1) initial points and create the simplexes
   void initConvexHull(){
@@ -124,7 +130,7 @@ class ConvexHull{
     
     for(int i = 0; i < extremes.size() - 1; i++){
       Vertex a = extremes.get(i);
-      for(int j = 0; j < extremes.size(); j++){
+      for(int j = i + 1; j < extremes.size(); j++){
         Vertex b = extremes.get(j);
         float dist = sqrDist(a.pos, b.pos);
         
@@ -140,7 +146,7 @@ class ConvexHull{
     initialPoints.add(second);
     
     for(int i = 2; i <= dim; i++){
-      float maximum = 0;
+      float maximum = EPSILON;
       Vertex maxPoint = null;
       
       for(int j = 0; j < extremes.size(); j++){
@@ -155,9 +161,9 @@ class ConvexHull{
         }
       }
       
-      if(maxPoint != null){
+      if(maxPoint != null)
         initialPoints.add(maxPoint);
-      }else
+      else
         throw new IllegalArgumentException("Singular input data error");
     }
     return initialPoints;
@@ -178,7 +184,7 @@ class ConvexHull{
     }
     //update the adjacency (check all pair of faces)
     for(int i = 0; i < dim; i++){
-      for(int j = 0; j < dim + 1; j++){
+      for(int j = i + 1; j < dim + 1; j++){
         updateAdjacency(faces[i], faces[j]);//record adjacent face at oppsite vertex of the face
       }
     }
@@ -223,7 +229,7 @@ class ConvexHull{
     if(i == dim) return;
     
     //check if only 1 vertex wasn't touching bacause we'll get face oppsite 1 vertex
-    for(int j = i + 1; j < dim; j++) if(Lv[j].tag == 0) break;
+    for(int j = i + 1; j < dim; j++) if(Lv[j].tag == 0) return;
     
     //if we are here, the two faces share an edge
     L.adjacent[i] = R;
@@ -252,7 +258,6 @@ class ConvexHull{
     Deque<Simplex> traverseStack = new ArrayDeque<Simplex>();
     traverseStack.push(currentFace);
     currentFace.tag = 1;
-    
     while(traverseStack.size() > 0){
       Simplex top = traverseStack.pop();
       
@@ -403,7 +408,6 @@ class ConvexHull{
       if(SimplexConnector.areConnectable(connector, current, dim)){
         list.remove(current);
         SimplexConnector.connect(current, connector);
-        
         return;
       }
     }
@@ -460,12 +464,6 @@ class ConvexHull{
       }
       face.beyondVertices.add(v);
     }
-  }
-  
-  void clear(){
-    centroid = new float[dim];
-    simplexes.clear();
-    vertices.clear();
   }
   
   void updateCenter(){

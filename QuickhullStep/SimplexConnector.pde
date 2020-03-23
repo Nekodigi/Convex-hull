@@ -17,6 +17,9 @@ static class SimplexConnector{
         hashCode += (23 * hashCode + v);
       }
     }
+    
+    Arrays.sort(vertices);
+    
     hashCode = abs(hashCode);
   }
   

@@ -20,6 +20,6 @@ ArrayList<Vertex> getNotIth(ArrayList<Vertex> vs, int i){
 class VertexIdComparator implements Comparator<Vertex> {
   @Override
   public int compare(Vertex a, Vertex b) {
-    return 0;
+    return a.id - b.id;
   }
 }

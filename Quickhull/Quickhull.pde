@@ -4,7 +4,7 @@ boolean mode3D = false;
 
 ExampleHull hull2D = new ExampleHull(2);
 ExampleHull hull3D = new ExampleHull(3);
-ExampleHull hull4D = new ExampleHull(4);
+//ExampleHull hull4D = new ExampleHull(4);
 
 void setup(){
   fullScreen(P3D);
@@ -13,12 +13,17 @@ void setup(){
 }
 
 void keyPressed(){
+  if(key == 'r'){
+    hull2D = new ExampleHull(2);
+    hull3D = new ExampleHull(3);
+  }
   if(key == 'm'){
     mode3D = !mode3D;
   }
 }
 
 void draw(){
+  lights();
   background(200);
   translate(width/2, height/2);
   if(mode3D){
