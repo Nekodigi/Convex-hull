@@ -67,7 +67,7 @@ float[] avg(float[] ... vecs){
       result[j] += v[j];
     }
   }
-  return result;
+  return div(result, vecs.length);
 }
 
 float[] mult(float[] v, float x){
