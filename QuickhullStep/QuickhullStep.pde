@@ -7,8 +7,8 @@ ExampleHull hull3D = new ExampleHull(3);
 //ExampleHull hull4D = new ExampleHull(4);
 
 void setup(){
-  fullScreen(P3D);
-  //size(500, 500, P3D);
+  //fullScreen(P3D);
+  size(500, 500, P3D);
   ortho();
 }
 

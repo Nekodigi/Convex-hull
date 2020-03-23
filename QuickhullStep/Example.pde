@@ -1,6 +1,6 @@
 class ExampleHull{
   int numVertices = 100;
-  float size = 800;
+  float size = 200;
   ConvexHull hull;
   ArrayList<Vertex> vertices = new ArrayList<Vertex>();
   int seed = 0;

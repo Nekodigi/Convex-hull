@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 //const
-int point_count = 1000;
+int point_count = 200;
 int point_size = 20;
-int speed = 500;
+int speed = 50;
 
 //valiable
 int[] sorted_index = new int[point_count+1];
@@ -14,7 +14,8 @@ PVector[] points = new PVector[point_count];
 float[] thetas = new float[point_count];
 ArrayList<Integer> plists = new ArrayList<Integer>();
 void setup(){
-  fullScreen();
+  //fullScreen();
+  size(1000, 1000);
   frameRate(speed);
   //createPoint
   for(int i = 0; i < point_count; i++){
